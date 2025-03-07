@@ -13,13 +13,13 @@
 .title {
     color: white;
     text-align: center;
-    font-size: 40px;
-    margin-top: 10%;
+    font-size: 50px;
+    margin-top: 5%;
 }
 
 .display {
     color: white;
-    font-size: 25px;
+    font-size: 35px;
     text-align: center;
     margin-top: 1em;
     margin-bottom: 1em;
@@ -32,22 +32,23 @@
 .container {
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 33% 33% 33%;
-    grid-template-rows: 33% 33% 33%;
-    max-width: 300px;
-
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    max-width: 450px; 
+    max-height: 450px; 
 }
 
 .tile {
     border: 3px solid rgb(179, 65, 65);
-    min-width: 100px;
-    min-height: 100px;
+    min-width: 150px; 
+    min-height: 150px; 
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 50px;
+    font-size: 75px; 
     cursor: pointer;
 }
+
 
 .playerX {
     color: #6499E9;
@@ -62,12 +63,12 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 1em;
+    margin-top: 2em;
 }
 
 .controls button {
     color: white;
-    padding: 8px;
+    padding: 14px;
     border-radius: 8px;
     border: none;
     font-size: 20px;
