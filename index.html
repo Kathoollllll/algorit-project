@@ -11,27 +11,41 @@
 </head>
 <body>
     <main class="background">
-        <section class="title">
-            <h1>Tic Tac Toe</h1>
-        </section>
-        <section class="display">
-            Player <span class="display-player playerX">X</span>'s turn
-        </section>
-        <section class="container">
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-        </section>
-        <section class="display announcer hide"></section>
-        <section class="controls">
-            <button id="reset">Reset</button>
-        </section>
+        <div class="game-wrapper">
+            <section class="player-box player-x-box">
+                <h2>Player X</h2>
+                <p>Score: <span id="score-x">0</span></p>
+            </section>
+    
+            <div class="game-content">
+                <section class="title">
+                    <h1>Tic Tac Toe</h1>
+                </section>
+                <section class="display">
+                    Player <span class="display-player playerX">X</span>'s turn
+                </section>
+                <section class="container">
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                </section>
+                <section class="display announcer hide"></section>
+                <section class="controls">
+                    <button id="reset">Reset</button>
+                </section>
+            </div>
+    
+            <section class="player-box player-o-box">
+                <h2>Player O</h2>
+                <p>Score: <span id="score-o">0</span></p>
+            </section>
+        </div>
     </main>
 </body>
 </html>
