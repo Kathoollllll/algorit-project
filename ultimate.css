@@ -1,0 +1,157 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Itim', cursive;
+    box-sizing: border-box;
+}
+
+.background {
+    background-color: #000000;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 3rem; 
+}
+
+.title {
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    margin-top: 5%;
+}
+
+.display {
+    color: white;
+    font-size: 35px;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.hide {
+    display: none;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 90vmin;
+    height: 90vmin;
+    max-width: 500px;
+    max-height: 500px;
+    gap: 5px;
+    padding: 10px;
+    background-color: #222;
+    border-radius: 10px;
+}
+
+/* Each of the 9 individual tic-tac-toe boards */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 100%;
+    height: 100%;
+    background-color: #111;
+    border-radius: 5px;
+    border: 2px solid #444;
+}
+
+.tile {
+    background-color: #333;
+    border: 1px solid #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.tile:hover {
+    background-color: #444;
+    border-color: rgb(255, 99, 99);
+}
+
+.playerX {
+    color: #6499E9;
+    text-shadow: 2px 2px 4px rgba(100, 153, 233, 0.5);
+}
+
+.playerO {
+    color: #9400FF;
+    text-shadow: 2px 2px 4px rgba(148, 0, 255, 0.5);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    gap: 1rem;
+}
+
+.controls button {
+    color: white;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    font-size: 20px;
+    margin-left: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.restart:hover {
+    background-color: #316AC7;
+}
+
+#reset {
+    background-color: #FF3860;
+}
+
+#reset:hover {
+    background-color: #D03050;
+}
+
+.player-box {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 150px;
+}
+
+.player-x-box {
+    order: -1; 
+}
+
+.player-o-box {
+    order: 1; 
+}
+
+/* Highlight the board that is currently active */
+.active-board {
+    border: 3px solid yellow;
+}
+
+/* When a board is won, apply different background */
+.won-board {
+    background-color: rgba(100, 100, 100, 0.5);
+}
