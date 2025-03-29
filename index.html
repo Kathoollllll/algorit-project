@@ -14,9 +14,10 @@
         <div class="game-wrapper">
             <section class="player-box player-x-box">
                 <h2>Player X</h2>
-                <p>Score: <span id="score-x">0</span></p>
+                <div class="score-box">
+                    <span id="score-x">0</span>
+                </div>
             </section>
-    
             <div class="game-content">
                 <section class="title">
                     <h1>Tic Tac Toe</h1>
@@ -37,15 +38,30 @@
                 </section>
                 <section class="display announcer hide"></section>
                 <section class="controls">
-                    <button id="reset">Reset</button>
+                    <button id="reset">Next Round</button>
                 </section>
             </div>
     
             <section class="player-box player-o-box">
                 <h2>Player O</h2>
-                <p>Score: <span id="score-o">0</span></p>
+                <div class="score-box">
+                    <span id="score-o">0</span>
+                </div>
             </section>
         </div>
     </main>
+
+    <div class="overlay" id="overlay"></div>
+    
+    <div id="win-modal" class="modal hide">
+        <div class="modal-content">
+            <h2 id="win-message"></h2>
+            <div class="modal-buttons">
+                <button id="play-again">Play Again</button>
+                <button id="back-menu">Back to Menu</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

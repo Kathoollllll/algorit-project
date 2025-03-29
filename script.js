@@ -3,13 +3,23 @@ window.addEventListener('DOMContentLoaded', () => {
     const playerDisplay = document.querySelector('.display-player');
     const resetButton = document.querySelector('#reset');
     const announcer = document.querySelector('.announcer');
+    const scoreXDisplay = document.querySelector('#score-x'); 
+    const scoreODisplay = document.querySelector('#score-o');
 
+
+    const modal = document.getElementById("win-modal");
+    const winMessage = document.getElementById("win-message");
+    const playAgainBtn = document.getElementById("play-again");
+    const backMenuBtn = document.getElementById("back-menu");
+    
     let boardSize = tiles.length; 
     let board = Array(boardSize).fill('');
     let bigBoard = boardSize === 81 ? Array(9).fill('') : null; 
     let currentPlayer = 'X';
     let isGameActive = true;
     let nextGrid = null; 
+    let scoreX = 0; 
+    let scoreO = 0;
 
     const PLAYERX_WON = 'PLAYERX_WON';
     const PLAYERO_WON = 'PLAYERO_WON';
@@ -57,6 +67,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function validateWin(conditions) {
         let roundWon = false;
+        let winningPlayer = currentPlayer;
+
         for (let condition of conditions) {
             let values = condition.map(index => board[index]);
             if (!values.includes('') && new Set(values).size === 1) {
@@ -66,10 +78,14 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         if (roundWon) {
-            announce(currentPlayer === 'X' ? PLAYERX_WON : PLAYERO_WON);
-            isGameActive = false;
+            setTimeout(() => {
+                announce(winningPlayer === 'X' ? PLAYERX_WON : PLAYERO_WON);
+                isGameActive = false;
+            }, 200); 
         } else if (!board.includes('')) {
-            announce(TIE);
+            setTimeout(() => {
+                announce(TIE);
+            }, 200);
         }
     }
 
@@ -81,29 +97,49 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        let winningPlayer = currentPlayer;
+
         for (let condition of winningConditionsUltimate) {
             let values = condition.map(index => bigBoard[index]);
             if (!values.includes('') && new Set(values).size === 1) {
-                announce(currentPlayer === 'X' ? PLAYERX_WON : PLAYERO_WON);
-                isGameActive = false;
+                setTimeout(() => { 
+                    announce(winningPlayer === 'X' ? PLAYERX_WON : PLAYERO_WON);
+                    isGameActive = false;
+                }, 200);
                 return;
             }
         }
 
-        if (!bigBoard.includes('')) announce(TIE);
+        if (!bigBoard.includes('')) {
+            setTimeout(() => {
+                announce(TIE);
+            }, 200);
+        }
     }
 
     function announce(type) {
         switch (type) {
             case PLAYERO_WON:
+                scoreO++;
+                scoreODisplay.innerText = scoreO; 
+                if (scoreO === 5) {
+                    showWinModal('O');
+                }
                 announcer.innerHTML = 'Player <span class="playerO">O</span> Won';
                 break;
             case PLAYERX_WON:
+                scoreX++; 
+                scoreXDisplay.innerText = scoreX; 
+                if (scoreX === 5) {
+                    showWinModal('X');
+                }
                 announcer.innerHTML = 'Player <span class="playerX">X</span> Won';
                 break;
             case TIE:
                 announcer.innerText = 'Tie';
+                showWinModal('');
         }
+
         announcer.classList.remove('hide');
     }
 
@@ -112,7 +148,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (boardSize === 81) {
             if (nextGrid !== null && gridIndex !== nextGrid && bigBoard[nextGrid] === '') {
-                return false; // Must play in correct mini-board
+                return false; 
             }
             return board[index] === '' && bigBoard[gridIndex] === '';
         } else {
@@ -168,9 +204,43 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function resetGame() {
+        scoreX = 0;
+        scoreO = 0;
+        scoreXDisplay.innerText = '0'; 
+        scoreODisplay.innerText = '0'; 
+        resetBoard();
+    }
+
     tiles.forEach((tile, index) => {
         tile.addEventListener('click', () => userAction(tile, index));
     });
 
     resetButton.addEventListener('click', resetBoard);
+
+    function showWinModal(winner) {
+        document.getElementById('overlay').classList.add("show");
+        modal.classList.add("show");
+        if (winner) {
+            winMessage.innerHTML = `Player <span class="player${winner}">${winner}</span> Wins the Game!`;
+        } else {
+            winMessage.innerText = 'It\'s a Tie!';
+        }
+    }
+
+    function hideWinModal() {
+        document.getElementById('overlay').classList.remove("show"); 
+        modal.classList.remove("show");
+    }
+
+    playAgainBtn.addEventListener('click', () => {
+        hideWinModal();
+        resetGame();
+    });
+    
+    backMenuBtn.addEventListener('click', () => {
+        hideWinModal();
+        window.location.href = "home.html";
+    });
+
 });

@@ -39,6 +39,7 @@
     text-align: center;
     margin-top: 1em;
     margin-bottom: 1em;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .hide {
@@ -84,6 +85,35 @@
 .playerO {
     color: #9400FF;
     text-shadow: 2px 2px 4px rgba(148, 0, 255, 0.5);
+}
+
+.player-box {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-box h2 {
+    margin-bottom: 10px; 
+}
+
+.score-box {
+    background-color: #222; 
+    padding: 20px 40px; 
+    border-radius: 10px;
+    font-size: 40px; 
+    font-weight: bold;
+    color: #fff;
+    min-width: 80px; 
+    text-align: center;
+    margin-top: 10px;
 }
 
 .controls {
@@ -134,3 +164,86 @@
 .player-o-box {
     order: 1; 
 }
+
+/* for the little screen */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 999; 
+    display: none; 
+}
+
+.overlay.show {
+    display: block; 
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    z-index: 1000;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #222;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+#win-message {
+    font-size: 28px;
+}
+
+.modal-buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.modal-buttons button {
+    background-color: #FF3860;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    transition: background 0.3s ease-in-out;
+    flex: 1;
+}
+
+#play-again {
+    background-color: #316AC7;
+}
+
+#play-again:hover {
+    background-color: #2557A6;
+}
+
+#back-menu:hover {
+    background-color: #D03050;
+}
+

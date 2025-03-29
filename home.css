@@ -6,7 +6,7 @@
 }
 
 .background {
-    background: linear-gradient(135deg, #000000, #1a1a2e, #16213e);
+    background-color: #000000;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -57,3 +57,5 @@
 .difficulty-buttons button:active {
     transform: scale(0.95);
 }
+
+
