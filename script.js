@@ -4,12 +4,12 @@ window.addEventListener('DOMContentLoaded', () => {
     const resetButton = document.querySelector('#reset');
     const announcer = document.querySelector('.announcer');
 
-    let boardSize = tiles.length; // Dynamic: 9 (3x3), 16 (4x4), 81 (Ultimate)
+    let boardSize = tiles.length; 
     let board = Array(boardSize).fill('');
-    let bigBoard = boardSize === 81 ? Array(9).fill('') : null; // Only for Ultimate mode
+    let bigBoard = boardSize === 81 ? Array(9).fill('') : null; 
     let currentPlayer = 'X';
     let isGameActive = true;
-    let nextGrid = null; // Ultimate mode: Determines the required mini-board
+    let nextGrid = null; 
 
     const PLAYERX_WON = 'PLAYERX_WON';
     const PLAYERO_WON = 'PLAYERO_WON';
@@ -27,10 +27,10 @@ window.addEventListener('DOMContentLoaded', () => {
         [0, 5, 10, 15], [3, 6, 9, 12]
     ];
 
-    const winningConditionsUltimate = winningConditions3x3; // Ultimate board follows 3x3 win logic
+    const winningConditionsUltimate = winningConditions3x3; 
 
     function checkSmallGridWinner(gridIndex) {
-        if (boardSize !== 81) return ''; // Only applies to Ultimate mode
+        if (boardSize !== 81) return '';
 
         let start = gridIndex * 9;
         let smallGrid = board.slice(start, start + 9);
@@ -38,11 +38,11 @@ window.addEventListener('DOMContentLoaded', () => {
         for (let condition of winningConditions3x3) {
             let values = condition.map(index => smallGrid[index]);
             if (!values.includes('') && new Set(values).size === 1) {
-                return values[0]; // 'X' or 'O' if someone won
+                return values[0]; 
             }
         }
 
-        return smallGrid.includes('') ? '' : 'TIE'; // 'TIE' if full with no winner
+        return smallGrid.includes('') ? '' : 'TIE';
     }
 
     function handleResultValidation() {
